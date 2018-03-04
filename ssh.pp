@@ -1,5 +1,6 @@
 $authorized_keys = 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICa1xQPW/kFnPrO51Mp5gWpEpRZO8d6vtrWxIIpOoFd4 scott@scotts-server'
-$puppet_dir = '/home/scott/puppet'
+$home_folder     = '/home/scott'
+$puppet_dir      = "${home_folder}/puppet"
 package { 'openssh-server':
   ensure => installed,
 }
@@ -26,7 +27,7 @@ service { 'sshd':
   ensure => running,
   enable => true,
 }
-file { '/home/scott/.ssh/authorized_keys':
+file { "${home_folder}/.ssh/authorized_keys":
   ensure  => present,
   group   => '1000',
   owner   => '1000',

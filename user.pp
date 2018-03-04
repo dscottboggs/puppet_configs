@@ -1,3 +1,5 @@
+$home_folder = '/home/scott'
+$puppet_dir = "${home_folder}/puppet"
 user { 'scott':
   ensure  => 'present',
   comment => 'D. Scott Boggs',
@@ -9,11 +11,11 @@ user { 'scott':
   ],
   uid     => '1000',
   gid     => '1000',
-  home    => '/home/scott',
+  home    => $home_folder,
   shell   => '/bin/zsh'
 }
 user { 'root':
-  ensure => 'present',
+  ensure => present,
   gid    => '0',
   home   => '/root',
   shell  => '/bin/bash',
