@@ -1,0 +1,6 @@
+deb <%= @mirror %> <%= @os['distro']['codename'] %> <%= @suites %>
+deb-src <%= @mirror %> <%= @os['distro']['codename'] %> <%= @suites %>
+deb <%= @mirror %> <%= @os['distro']['codename'] %>-updates <%= @suites %>
+deb-src <%= @mirror %> <%= @os['distro']['codename'] %>-updates <%= @suites %>
+deb <%= @mirror %> <%= @os['distro']['codename'] %>-security <%= @suites %>
+deb-src <%= @mirror %> <%= @os['distro']['codename'] %>-security <%= @suites %>
