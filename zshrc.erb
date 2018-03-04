@@ -1,0 +1,83 @@
+HISTFILE=~/.zsh_history
+HISTSIZE=5000
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="yyyy-mm-dd"
+SAVEHIST=2500
+setopt appendhistory
+bindkey -e
+
+export ZSH=$HOME/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+plugins=(web-search sudo python json-tools history debian git)
+
+alias pp='pygmentize -g'
+alias dd='sudo dd status=progress'
+alias pkg='sudo apt-fast'
+
+###     Content added from Manjaro default ZSH config.                       ###
+
+setopt correct                                                  # Auto correct mistakes
+setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
+setopt nocaseglob                                               # Case insensitive globbing
+setopt numericglobsort                                          # Sort filenames numerically when it makes sense
+setopt appendhistory                                            # Immediately append history instead of overwriting
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' rehash true                              # automatically find new executables in path
+# Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path /tmp/zsh_cache
+export EDITOR=/usr/bin/nano
+export VISUAL=/usr/bin/nano
+WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+
+
+## Keybindings section
+bindkey -e
+bindkey '^[[7~' beginning-of-line                               # Home key
+bindkey '^[[H' beginning-of-line                                # Home key
+if [[ "${terminfo[khome]}" != "" ]]; then
+  bindkey "${terminfo[khome]}" beginning-of-line                # [Home] - Go to beginning of line
+fi
+bindkey '^[[8~' end-of-line                                     # End key
+bindkey '^[[F' end-of-line                                     # End key
+if [[ "${terminfo[kend]}" != "" ]]; then
+  bindkey "${terminfo[kend]}" end-of-line                       # [End] - Go to end of line
+fi
+bindkey '^[[2~' overwrite-mode                                  # Insert key
+bindkey '^[[3~' delete-char                                     # Delete key
+bindkey '^[[C'  forward-char                                    # Right key
+bindkey '^[[D'  backward-char                                   # Left key
+bindkey '^[[5~' history-beginning-search-backward               # Page up key
+bindkey '^[[6~' history-beginning-search-forward                # Page down key
+
+# Navigate words with ctrl+arrow keys
+bindkey '^[Oc' forward-word                                     #
+bindkey '^[Od' backward-word                                    #
+bindkey '^[[1;5D' backward-word                                 #
+bindkey '^[[1;5C' forward-word                                  #
+bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
+bindkey '^[[Z' undo                                             # Shift+tab undo last action
+
+# Color man pages
+export LESS_TERMCAP_mb=$'\E[01;32m'
+export LESS_TERMCAP_md=$'\E[01;32m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;47;34m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export LESS=-r
+
+# Theming section
+autoload -U compinit colors zcalc
+compinit -d
+colors
+
+DATE_STYLE='%Y-%d-%m at %H:%M'
+FULL_USER_NAME=$(getent passwd $USER | cut -d: -f5 | sed 's/,//g')
+echo "Welcome, $FULL_USER_NAME, to Bonkomputilo, the Mad Scientists' first rack."
+echo "If you are unauthorized, please send an email to sysadmin@tams.tech to"
+echo "report the vulnerability that allowed you access."
+
+echo "ZSH prompt loading successful for: $USER@$HOST at $(date +$DATE_STYLE)."
