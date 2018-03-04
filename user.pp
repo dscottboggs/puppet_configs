@@ -1,5 +1,6 @@
 # Miscellaneous setup for my user
 
+$my_email = 'scott@tams.tech'
 $important_packages_cli = [
     # specifically stuff that's important to me in a CLI environment
   'rsync', 'git', 'curl', 'wget', 'nano', 'htop'
@@ -39,5 +40,7 @@ file { "${home_folder}/.gitconfig":
   group   => '1000',
   owner   => '1000',
   mode    => '0644',
-  content => template("${puppet_dir}/gitconfig.erb")
+  content => "[user]
+	email = ${my_email}
+	name = scott"
 }
