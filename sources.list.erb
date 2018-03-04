@@ -1,6 +1,6 @@
-deb <%= @mirror %> <%= @os['lsb']['distcodename'] %> <%= @suites %>
-deb-src <%= @mirror %> <%= @os['lsb']['distcodename'] %> <%= @suites %>
-deb <%= @mirror %> <%= @os['lsb']['distcodename'] %>-updates <%= @suites %>
-deb-src <%= @mirror %> <%= @os['lsb']['distcodename'] %>-updates <%= @suites %>
-deb <%= @mirror %> <%= @os['lsb']['distcodename'] %>-security <%= @suites %>
-deb-src <%= @mirror %> <%= @os['lsb']['distcodename'] %>-security <%= @suites %>
+deb <%= @mirror %> <%= @software_release_name %> <%= @suites %>
+deb-src <%= @mirror %> <%= @software_release_name %> <%= @suites %>
+deb <%= @mirror %> <%= @software_release_name %>-updates <%= @suites %>
+deb-src <%= @mirror %> <%= @software_release_name %>-updates <%= @suites %>
+deb <%= @mirror %> <%= @software_release_name %>-security <%= @suites %>
+deb-src <%= @mirror %> <%= @software_release_name %>-security <%= @suites %>

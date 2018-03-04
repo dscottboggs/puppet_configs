@@ -3,11 +3,11 @@ $puppet_dir = "${home_folder}/puppet"
 $sourcefile = "${puppet_dir}/sources.list.erb"
 
 if  $::kernel == 'linux' {
-  if $::osfamily == 'ubuntu'{
+  if $::software_platform == 'Ubuntu'{
     $mirror='http://us.archive.ubuntu.com/ubuntu/'
     $suites='main restricted universe multiverse'
   }
-  elsif $::osfamily == 'debian' {
+  elsif $::software_platform == 'Debian' {
     $mirror='http://ftp.us.debian.org/debian/'
     $suites='main contrib non-free'
   }
