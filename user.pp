@@ -21,3 +21,12 @@ user { 'root':
   shell  => '/bin/bash',
   uid    => '0',
 }
+
+# global git configuration
+file { "${home_folder}/.gitconfig":
+  ensure  => present,
+  group   => '1000',
+  owner   => '1000',
+  mode    => '0644',
+  content => template("${puppet_dir}/gitconfig.erb")
+}
