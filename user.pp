@@ -12,6 +12,10 @@ package { $important_packages_cli:
   ensure => installed
 }
 
+group { 'scott':
+  ensure => 'present',
+  gid    => '1000',
+}
 user { 'scott':
   ensure  => present,
   comment => 'D. Scott Boggs',
