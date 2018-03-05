@@ -1,6 +1,6 @@
 $authorized_keys = 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICa1xQPW/kFnPrO51Mp5gWpEpRZO8d6vtrWxIIpOoFd4 scott@scotts-server'
 $home_folder     = '/home/scott'
-$puppet_dir      = "${home_folder}/puppet"
+$puppet_dir      = '/root/puppet'
 package { 'openssh-server':
   ensure => installed,
 }
@@ -26,6 +26,10 @@ file { '/etc/ssh/sshd_config':
 service { 'sshd':
   ensure => running,
   enable => true,
+}
+file { "${home_folder}/.ssh":
+  ensure => directory,
+  mode   => '0750',
 }
 file { "${home_folder}/.ssh/authorized_keys":
   ensure  => present,
