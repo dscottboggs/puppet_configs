@@ -1,7 +1,7 @@
 $authorized_keys = 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICa1xQPW/kFnPrO51Mp5gWpEpRZO8d6vtrWxIIpOoFd4 scott@scotts-server'
 $home_folder     = '/home/scott'
 $puppet_dir      = '/root/puppet'
-if $osfamily == 'Archlinux' {
+if $::osfamily == 'Archlinux' {
   package { 'openssh':
     ensure => installed,
   }
@@ -13,7 +13,7 @@ if $osfamily == 'Archlinux' {
 user { 'sshd':
   ensure  => present,
   comment => 'Secure Shell Daemon user',
-  gid     => '65534',   # represents "nogroup"
+  #gid     => '65534',   # represents "nogroup"
   home    => '/var/run/sshd',
   shell   => '/usr/sbin/nologin',
   uid     => '110'
@@ -23,10 +23,6 @@ file { '/etc/ssh/sshd_config':
   group   => '0',
   owner   => '0',  # 0 means root
   mode    => '0644',
-  require => [
-    Package['openssh-server'],
-    User['sshd']
-  ],
   content => template("${puppet_dir}/sshd_config.erb")
 }
 service { 'sshd':
@@ -36,6 +32,8 @@ service { 'sshd':
 file { "${home_folder}/.ssh":
   ensure => directory,
   mode   => '0750',
+  owner  => '1000',
+  group  => '1000'
 }
 file { "${home_folder}/.ssh/authorized_keys":
   ensure  => present,
