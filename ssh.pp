@@ -1,8 +1,14 @@
 $authorized_keys = 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICa1xQPW/kFnPrO51Mp5gWpEpRZO8d6vtrWxIIpOoFd4 scott@scotts-server'
 $home_folder     = '/home/scott'
 $puppet_dir      = '/root/puppet'
-package { 'openssh-server':
-  ensure => installed,
+if $osfamily == 'Archlinux' {
+  package { 'openssh':
+    ensure => installed,
+  }
+}else {
+  package { 'openssh-server':
+    ensure => installed,
+  }
 }
 user { 'sshd':
   ensure  => present,
