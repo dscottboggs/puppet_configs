@@ -27,6 +27,12 @@ user { 'scott':
   home    => $home_folder,
   shell   => '/bin/zsh'
 }
+file { '/home/scott':
+  ensure => directory,
+  mode   => '0755',
+  group  => '1000',
+  owner  => '1000'
+}
 user { 'root':
   ensure => present,
   gid    => '0',
