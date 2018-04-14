@@ -6,7 +6,7 @@ apt::source { 'x2go':
   key      => {
     id     => 'E1F958385BFE2B6E',
     server => 'keys.gnupg.net'
-  }
+  },
   location => 'https://packages.x2go.org/debian',
   release  => $facts['os']['lsb']['distcodename'],
   repos    => 'extras main',
