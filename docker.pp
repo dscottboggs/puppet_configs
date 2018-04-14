@@ -23,7 +23,7 @@ if $::osfamily == 'Debian' {
     repos    => 'stable',
     key      => {
       id     => '9DC858229FC7DD38854AE2D88D81803C0EBFCD88',
-      server => 'https://download.docker.com/linux/debian/gpg',
+      server => 'https://download.docker.com',
     },
     include  => {
       'src' => false,
