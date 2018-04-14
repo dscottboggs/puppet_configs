@@ -16,6 +16,9 @@ if $::osfamily == 'Debian' {
   package { 'software-properties-common':
     ensure => latest,
   }
+  package { 'dirmngr':
+    ensure => latest,
+  }
   apt::source { 'docker-ce':
     comment  => 'The official docker repository.',
     location => 'https://download.docker.com/linux/debian',
