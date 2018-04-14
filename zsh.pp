@@ -16,3 +16,10 @@ vcsrepo { "${home_folder}/.oh-my-zsh":
   provider => git,
   source   => 'https://github.com/robbyrussell/oh-my-zsh.git'
 }
+file { "${home_folder}/.oh-my-zsh/themes/dscottboggs.zsh-theme":
+  ensure  => file,
+  mode    => '0644',
+  owner   => '1000',
+  group   => '1000',
+  content => template("${puppet_dir}/zsh_theme.erb")
+}
