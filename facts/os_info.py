@@ -1,6 +1,9 @@
+#!/usr/bin/env python3
 from subprocess import run, PIPE
 
-runcmd = lambda cmd: run(cmd, shell=True, check=True, stdout=PIPE).stdout.decode()
+runcmd = lambda cmd: run(
+                            cmd, shell=True, check=True, stdout=PIPE
+                        ).stdout.decode().strip()
 
 def get_hw():
     res = runcmd("uname --hardware-platform")
