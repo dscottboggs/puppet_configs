@@ -22,7 +22,7 @@ if $::osfamily == 'Debian' {
     release  => $facts['os']['lsb']['distcodename'],
     repos    => 'stable',
     key      => {
-      id     => '9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88',
+      id     => '9DC858229FC7DD38854AE2D88D81803C0EBFCD88',
       server => 'https://download.docker.com/linux/debian/gpg',
     },
     include  => {
