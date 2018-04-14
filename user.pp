@@ -19,7 +19,8 @@ group { 'scott':
 user { 'scott':
   ensure  => present,
   comment => 'D. Scott Boggs',
-  groups  => ['adm',
+  groups  => [
+    'adm',
     'sudo',
   ],
   uid     => '1000',

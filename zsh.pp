@@ -19,7 +19,7 @@ vcsrepo { "${home_folder}/.oh-my-zsh":
 file { "${home_folder}/.oh-my-zsh/themes/dscottboggs.zsh-theme":
   ensure  => file,
   mode    => '0644',
-  owner   => '1000',
-  group   => '1000',
+  owner   => '0',
+  group   => '0',
   content => template("${puppet_dir}/zsh_theme.erb")
 }
