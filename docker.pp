@@ -30,7 +30,6 @@ if $::osfamily == 'Debian' {
       'deb' => true
     }
   }
-  notify => Exec['apt_update']
   package { 'docker-ce':
     ensure => latest,
   }
