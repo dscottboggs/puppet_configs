@@ -14,12 +14,14 @@ file { "${home_folder}/.zshrc":
 vcsrepo { "${home_folder}/.oh-my-zsh":
   ensure   => latest,
   provider => git,
-  source   => 'https://github.com/robbyrussell/oh-my-zsh.git'
+  source   => 'https://github.com/robbyrussell/oh-my-zsh.git',
+  owner    => '1000',
+  group    => '1000',
 }
 file { "${home_folder}/.oh-my-zsh/themes/dscottboggs.zsh-theme":
   ensure  => file,
   mode    => '0644',
-  owner   => '0',
-  group   => '0',
+  owner   => '1000',
+  group   => '1000',
   content => template("${puppet_dir}/zsh_theme.erb")
 }
