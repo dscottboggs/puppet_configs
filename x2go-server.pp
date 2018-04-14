@@ -24,7 +24,7 @@ exec { 'apt-update':
 package { 'x2go-keyring':
   ensure => latest,
 }
-exec { 'apt-update':
+exec { 'apt-update-again':
   command => 'apt-get update',
   path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
 }
