@@ -17,16 +17,8 @@ apt::source { 'x2go':
     'deb' => true
   }
 }
-exec { 'apt-update':
-  command => 'apt-get update',
-  path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-}
 package { 'x2go-keyring':
   ensure => latest,
-}
-exec { 'apt-update-again':
-  command => 'apt-get update',
-  path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
 }
 package { 'x2goserver':
   ensure => latest,
