@@ -33,6 +33,9 @@ if $::osfamily == 'Debian' {
       'deb' => true
     }
   }
+  exec { 'update-apt':
+    command => '/usr/bin/apt-get update',
+  }
   package { 'docker-ce':
     ensure => latest,
   }
