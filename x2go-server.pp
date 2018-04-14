@@ -1,3 +1,5 @@
+include apt
+
 package { 'apt-transport-https':
   ensure => installed,
 }
