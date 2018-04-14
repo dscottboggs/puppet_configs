@@ -1,7 +1,7 @@
 package { 'apt-transport-https':
   ensure => installed,
 }
-apt::source { 'x2go'
+apt::source { 'x2go':
   comment  => 'The x2go repository.',
   key      => {
     id     => 'E1F958385BFE2B6E',
