@@ -29,3 +29,9 @@ package { 'x2goserver-xsession':
 package { 'x2godesktopsharing':
   ensure => latest,
 }
+service { 'x2goserver':
+  ensure     => running,
+  enable     => true,
+  hasrestart => true,
+  hasstatus  => true,
+}
