@@ -1,5 +1,5 @@
 $home_folder = '/home/scott'
-$puppet_dir = '/root/puppet'
+$puppet_dir = '/root/puppet_configs'
 $sourcefile = "${puppet_dir}/generic/sources.list.erb"
 $release = $lsbdistcodename
 
