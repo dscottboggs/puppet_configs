@@ -21,7 +21,7 @@ file { '/etc/ssh/sshd_config':
   group   => '0',
   owner   => '0',  # 0 means root
   mode    => '0644',
-  content => template("${puppet_dir}/sshd_config.erb")
+  content => template("${puppet_dir}/generic/sshd_config.erb")
 }
 service { 'sshd':
   ensure => running,
