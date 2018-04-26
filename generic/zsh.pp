@@ -20,5 +20,5 @@ file { "${home_folder}/.oh-my-zsh/themes/dscottboggs.zsh-theme":
   mode    => '0644',
   owner   => '1000',
   group   => '1000',
-  content => template("${puppet_dir}/zsh_theme.erb")
+  content => template("${puppet_dir}/generic/zsh_theme.erb")
 }
