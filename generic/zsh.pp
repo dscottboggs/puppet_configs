@@ -1,5 +1,5 @@
 $home_folder = '/home/scott'
-$puppet_dir = '/root/puppet'
+$puppet_dir = '/root/puppet/generic'
 
 package { 'zsh':
   ensure => installed,

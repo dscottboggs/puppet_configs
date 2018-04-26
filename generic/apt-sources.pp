@@ -1,20 +1,24 @@
 $home_folder = '/home/scott'
-$puppet_dir = "${home_folder}/puppet"
-$sourcefile = "${puppet_dir}/sources.list.erb"
+$puppet_dir = '/root/puppet'
+$sourcefile = "${puppet_dir}/generic/sources.list.erb"
+$release = $lsbdistcodename
 
 if  $::kernel == 'linux' {
   if $::osfamily == 'Debian' {
-    if $software_platform == 'Ubuntu'{
+    if $lsbdistid == 'Ubuntu'{
       $mirror='http://us.archive.ubuntu.com/ubuntu/'
       $suites='main restricted universe multiverse'
+      notice("Mirror: ${mirror}\nSuites: ${suites}\nRelease: ${release}")
     }
-    elsif $software_platform == 'Debian' {
+    elsif $lsbdistid == 'Debian' {
       $mirror='http://ftp.us.debian.org/debian/'
       $suites='main contrib non-free'
-    }
-    file { '/etc/apt/sources.list':
-      ensure  => file,
-      mode    => '0644',
-      content => template($sourcefile)
+      notice("Mirror: ${mirror}\nSuites: ${suites}\nRelease: ${release}")
     }
   }
+}
+file { '/etc/apt/sources.list':
+  ensure  => file,
+  mode    => '0644',
+  content => template($sourcefile)
+}
