@@ -1,5 +1,3 @@
-$puppet_dir = '/root/puppet_configs'
-
 package { 'vim':
   ensure => latest,
 }

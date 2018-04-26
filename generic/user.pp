@@ -5,8 +5,6 @@ $important_packages_cli = [
     # specifically stuff that's important to me in a CLI environment
   'rsync', 'git', 'curl', 'wget', 'nano', 'htop'
 ]
-$home_folder = '/home/scott'
-$puppet_dir = "${home_folder}/puppet"
 
 package { $important_packages_cli:
   ensure => installed

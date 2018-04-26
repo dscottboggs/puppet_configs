@@ -1,5 +1,3 @@
-$home_folder = '/home/scott'
-$puppet_dir = '/root/puppet/generic'
 group { 'sudo':
   ensure => 'present',
   gid    => '27',

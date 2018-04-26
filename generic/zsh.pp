@@ -1,6 +1,3 @@
-$home_folder = '/home/scott'
-$puppet_dir = '/root/puppet/generic'
-
 package { 'zsh':
   ensure => installed,
 }
@@ -9,7 +6,7 @@ file { "${home_folder}/.zshrc":
   group   => '1000',
   owner   => '1000',
   mode    => '0644',
-  content => template("${puppet_dir}/zshrc.erb")
+  content => template("${puppet_dir}/generic/zshrc.erb")
 }
 vcsrepo { "${home_folder}/.oh-my-zsh":
   ensure   => latest,
