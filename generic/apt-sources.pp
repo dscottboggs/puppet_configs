@@ -1,24 +1,67 @@
-$home_folder = '/home/scott'
-$puppet_dir = '/root/puppet_configs'
-$sourcefile = "${puppet_dir}/generic/sources.list.erb"
-$release = $lsbdistcodename
+$mirror_link = {
+  'Ubuntu' = 'http://us.archive.ubuntu.com/ubuntu/'
+  'Debian' = 'http://ftp.us.debian.org/debian/'
+}
 
-if  $::kernel == 'linux' {
-  if $::osfamily == 'Debian' {
-    if $lsbdistid == 'Ubuntu'{
-      $mirror='http://us.archive.ubuntu.com/ubuntu/'
-      $suites='main restricted universe multiverse'
-      notice("Mirror: ${mirror}\nSuites: ${suites}\nRelease: ${release}")
+$distro_suites = {
+  'Ubuntu' = 'main restricted universe multiverse'
+  'Debian' = 'main contrib non-free'
+}
+$signing_keys = {
+  'Debian' => {
+    'updates' => {
+      source => 'https://ftp-master.debian.org/keys/archive-key-9.asc',
+      id     => 'E1CF20DDFFE4B89E802658F1E0B11894F66AEC98'
     }
-    elsif $lsbdistid == 'Debian' {
-      $mirror='http://ftp.us.debian.org/debian/'
-      $suites='main contrib non-free'
-      notice("Mirror: ${mirror}\nSuites: ${suites}\nRelease: ${release}")
+    'security' => {
+      source => 'https://ftp-master.debian.org/keys/archive-key-9-security.asc',
+      id     => '6ED6F5CB5FA6FB2F460AE88EEDA0D2388AE22BA9'
+    }
+  }
+  'Ubuntu' => {
+    'updates' => {
+      source => 'https://keyserver.ubuntu.com'
+      id     => '630239CC130E1A7FD81A27B140976EAF437D05B5'
+    }
+    'security' => {
+      source => 'https://keyserver.ubuntu.com'
+      id     => '630239CC130E1A7FD81A27B140976EAF437D05B5'
     }
   }
 }
-file { '/etc/apt/sources.list':
-  ensure  => file,
-  mode    => '0644',
-  content => template($sourcefile)
+
+apt::source { 'distro':
+  comment  => 'The default repository for the distro.',
+  location => $mirror_link[$lsbdistid],
+  release  => $lsbdistcodename,
+  repos    => $distro_suites[$lsbdistid],
+  include  => {
+    'deb' => true,
+    'src' => true
+  },
+  key      => $signing_keys[$lsbdistid]['updates']
+}
+
+apt::source { 'distro':
+  comment  => 'The default repository for the distro.',
+  location => $mirror_link[$lsbdistid],
+  release  => "${lsbdistcodename}-updates",
+  repos    => $distro_suites[$lsbdistid],
+  include  => {
+    'deb' => true,
+    'src' => true
+  },
+  key      => $signing_keys[$lsbdistid]['updates']
+}
+
+apt::source { 'distro':
+  comment  => 'The default repository for the distro.',
+  location => $mirror_link[$lsbdistid],
+  release  => "${lsbdistcodename}-security",
+  repos    => $distro_suites[$lsbdistid],
+  include  => {
+    'deb' => true,
+    'src' => true
+  },
+  key      => $signing_keys[$lsbdistid]['security']
 }
