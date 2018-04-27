@@ -1,11 +1,5 @@
 # Miscellaneous setup for my user
 
-$my_email = 'scott@tams.tech'
-$important_packages_cli = [
-    # specifically stuff that's important to me in a CLI environment
-  'rsync', 'git', 'curl', 'wget', 'nano', 'htop'
-]
-
 package { $important_packages_cli:
   ensure => installed
 }

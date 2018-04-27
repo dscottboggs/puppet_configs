@@ -1,4 +1,3 @@
-$authorized_keys = 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICa1xQPW/kFnPrO51Mp5gWpEpRZO8d6vtrWxIIpOoFd4 scott@scotts-server'
 if $::osfamily == 'Archlinux' {
   package { 'openssh':
     ensure => installed,
