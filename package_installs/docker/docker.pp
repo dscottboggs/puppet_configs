@@ -1,15 +1,12 @@
 include apt
 
 if $::osfamily == 'Debian' {
-  package { 'apt-transport-https':
-    ensure => latest,
-  }
   package { 'ca-certificates':
     ensure => latest,
   }
-  package { 'curl':
-    ensure => latest,
-  }
+  #package { 'curl':
+  #  ensure => latest,
+  #}	# handled by my user manifest already
   package { 'gnupg2':
     ensure => latest,
   }

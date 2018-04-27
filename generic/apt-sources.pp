@@ -33,3 +33,6 @@ apt::source { 'distro-security':
   },
   key      => $signing_keys[$lsbdistid]['security']
 }
+package { 'apt-transport-https':
+  ensure => latest
+}

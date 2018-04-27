@@ -6,5 +6,5 @@ file { '/home/scott/.vimrc':
   mode    => '0644',
   user    => 1000,
   group   => 1000,
-  content => template("${puppet_dir}/package_installs/.vimrc")
+  content => template("${puppet_dir}/package_installs/vimrc.txt")
 }
