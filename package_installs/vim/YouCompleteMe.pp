@@ -18,10 +18,6 @@ package { 'jedi':
   ensure   => latest,
   provider => pip3
 }
-package { 'jedi':
-  ensure   => latest,
-  provider => pip
-}
 package { 'mono-runtime':
   ensure => latest
 }
