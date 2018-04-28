@@ -49,7 +49,7 @@ package { 'rustc':
 package { 'cargo':
   ensure => latest
 }
-vcsrepo { "${home_folder}/.vim/bundle/YouCompleteMe":
+vcsrepo { "$home_folder/.vim/bundle/YouCompleteMe":
   ensure   => latest,
   provider => git,
   source   => 'https://github.com/Valloric/YouCompleteMe.git'
