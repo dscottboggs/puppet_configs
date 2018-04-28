@@ -14,9 +14,6 @@ package { 'python-dev':
 package { 'python-dev3':
   ensure => latest
 }
-package { 'python-dev':
-  ensure => latest
-}
 package { 'jedi':
   ensure   => latest,
   provider => pip3
