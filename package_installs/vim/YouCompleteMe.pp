@@ -46,7 +46,7 @@ package { 'xbuild':
 package { 'rustc':
   ensure => latest
 }
-package { 'rustc':
+package { 'cargo':
   ensure => latest
 }
 vcsrepo { "${home_folder}/.vim/bundle/YouCompleteMe":
