@@ -1,6 +1,7 @@
 # mod('puppet-nodejs', '5.0.0')
 # mod('puppetlabs-vcsrepo', '2.3.0')
 # I think the in-file module definitions are just for like the 'pro' version.
+$home_folder = '/home/scott'
 
 package { 'build-essential':
   ensure => latest
@@ -49,7 +50,7 @@ package { 'rustc':
 package { 'cargo':
   ensure => latest
 }
-vcsrepo { "$home_folder/.vim/bundle/YouCompleteMe":
+vcsrepo { "${home_folder}/.vim/bundle/YouCompleteMe":
   ensure   => latest,
   provider => git,
   source   => 'https://github.com/Valloric/YouCompleteMe.git'
